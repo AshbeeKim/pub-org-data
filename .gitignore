@@ -15,19 +15,9 @@ _site
 2차_추가모집_수련생_안내사항
 2차_추가모집_업무가이드
 2차_추가모집_훈련
-# ## 과제
-# reports/._*
-# reports/*.png
-# reports/*.xlsx
 ## PubOrgComp
 script/comp_*
 script/day*
-# script/*.csv
-# script/*.xls
-# script/*.xlsx
-# script/*.pptx
-script/*.pdf
-script/._*
 
 # 업무 중 불필요하다고 판단되는 내용
 data
