@@ -1,0 +1,48 @@
+_site
+# 삭제해도 상관없는, 아니 꼭 삭제해야하는 애플 숨김 파일
+.DS_Store
+._*
+.*
+*.pdf
+*.pptx
+*.png
+*.csv
+*.xls
+*.xlsx
+
+# 대외비
+2차_추가모집_사전훈련
+2차_추가모집_수련생_안내사항
+2차_추가모집_업무가이드
+2차_추가모집_훈련
+# ## 과제
+# reports/._*
+# reports/*.png
+# reports/*.xlsx
+## PubOrgComp
+script/comp_*
+script/day*
+# script/*.csv
+# script/*.xls
+# script/*.xlsx
+# script/*.pptx
+script/*.pdf
+script/._*
+
+# 업무 중 불필요하다고 판단되는 내용
+data
+script/*.json
+script/config/from2to_json.py
+
+# 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
+*.lock
+*.toml
+*.md
+LICENSE
+config/scraping
+config/__init__.py
+config/kr_csv.py
+script/config/Scrap.py
+reports/Nov.py
+dependency.txt
+script/search-task.md
