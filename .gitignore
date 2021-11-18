@@ -11,16 +11,12 @@ _site
 *.xlsx
 
 # 대외비
-2차_추가모집_사전훈련
-2차_추가모집_수련생_안내사항
-2차_추가모집_업무가이드
-2차_추가모집_훈련
+2차_*
 ## PubOrgComp
 script/comp_*
 script/day*
 
 # 업무 중 불필요하다고 판단되는 내용
-data
 script/*.json
 script/config/from2to_json.py
 
@@ -28,11 +24,16 @@ script/config/from2to_json.py
 *.lock
 *.toml
 *.md
+data
 LICENSE
 config/scraping
 config/__init__.py
 config/kr_csv.py
+## scraping baseline from colab
 script/config/Scrap.py
-reports/Nov.py
+## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
+reports/Nov.ipynb
+## check dependencies using poetry
 dependency.txt
+## module list, how to use, task['script'] flow
 script/search-task.md
