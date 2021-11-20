@@ -19,16 +19,22 @@ def UpdateJSON(days, tasks, urls=None, path=None):
         (jsd['comp_list']['org_url']).append(urls)  # 나중에 받아와서 정제 후 입력되도록 수정할 것
         (jsd['comp_list']['tasks']).append(tasks)
         with open(f'{path}/tasklist.json', 'w') as jsf:
-            jsf.write(json.dumps(jsd, indent=4))
+            jsf.write(json.dumps(jsd, indent=4, ensure_ascii=False))
+
+# with open('/Volumes/WORK/OpenData/script/tasklist.json', 'w') as jsf:
+#     jsf.write(json.dumps(tasklist, indent=4, ensure_ascii=False))
+# with open(path, 'a+', encoding='utf-8') as jsf:
+    # json.dump(dictobj, jsf, indent=4, ensure_ascii=False)
 
 def NessFromJSON(path, num=-1):
-    with open(f'{path}/tasklist.json', 'r') as jsf:
+    with open(f'{path}/tasklist.json', 'r', encoding='utf-8') as jsf:
         jsd = json.loads(jsf.read())
     
     URL = jsd['pub_url']
     DAY = jsd['comp_list']['days'][num]
     SITE = jsd['comp_list']['org_url'][num]
     TASK = jsd['comp_list']['tasks'][num]
+    # print(jsd)
     return URL, DAY, SITE, TASK
 
 def metaPubFile(option=None):

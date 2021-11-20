@@ -21,13 +21,12 @@ else:
     
 # init pandas options
 pdDPoptions()
-
+    
 # update and init task
 # https://performance.opendata2021.kr/newtask/index.do
 # https://performance.opendata2021.kr/index.do  
 ## 업무 페이지 로그인 만료 화면 
     ### <- 웃긴 게 여기서 바로 접근하면, 로그인 아이디랑 비밀번호가 맞는데도 로그인이랑 비밀번호가 맞지 않다는 오류메세지가 출력됨. 어디서 끌어온 html코드로 보임
-
 #  ID : 
     # selector ; #loginId
     # XPATH ; //*[@id="loginId"]
@@ -38,35 +37,31 @@ pdDPoptions()
     # selector ; #login
     # XPATH ; //*[@id="login"]
 # td.class="jobAsignDt" >>> day99로 출력되는 형식이 아님
-DAYS = "day14"
-# 나중에 크롤링으로 가져올 부분_1
+
+
+# 나중에 크롤링으로 가지고 올 부분
 # tbody@jobGrid
 # td>a.class="data"
 # a>href로 접근하면 화면이 이상하게 출력됨. selenium으로 접근해야 함.
-TASKS = ["전라남도 광양시_민방위대피시설",
-         "서울시 청소년 손상 및 안전의식 통계",
-         "서울시립미술관 SeMA매거진 정보(영문)",
-         "서울특별시 강남구 쓰레기종량제봉투판매업 인허가 정보",
-         "업무상재해 부상자 및 사망자(성/산업별)_2000~2006",
-         "선박스케줄 수집정보_해양수산부(해운항만물류정보센터(SP-IDC)"]
-# SITE 입력하는 부분은 나중에 크롤링이 나은지, 짜증나는 데이터 정제가 빠른지 비교하고 작성
 # td.class="siteNm"
-SITES = ["gwangyang.go.kr/data",
-         "data.seoul.go.kr",
-         "data.seoul.go.kr",
-         "data.seoul.go.kr",
-         "gsis.kwdi.re.kr",
-         "www.vadahub.go.kr"]
-UpdateJSON(DAYS, TASKS, urls=SITES, path=path)
-URL, DAY, SITE, TASK = NessFromJSON(path)
-# URL, DAY, SITE, TASK = NessFromJSON(path, -2)
+# SITE 입력하는 부분은 나중에 크롤링이 나은지, 짜증나는 데이터 정제가 빠른지 비교하고 작성
+
+# with open(f"{os.getcwd()}/task.json", 'r') as jsf:
+#     jsd = json.loads(jsf.read())
+
+# ***  ***
+# DAYS, TASKS, SITES = jsd['date'], jsd['tasks'], jsd['org_url']
+# UpdateJSON(DAYS, TASKS, urls=SITES, path=path)
+
+# URL, DAY, SITE, TASK = NessFromJSON(path)
+# URL, DAY, SITE, TASK = NessFromJSON(path, 5)
 
 '''
 CheckPoint_1
 : main.ipynb "markdown"으로 확인
 '''
-TodayDF, idpw = ToDoDF(TASK)
-print(TodayDF.to_markdown())
+# TodayDF, idpw = ToDoDF(TASK)
+# print(TodayDF.to_markdown())
 # # '''
 # # days = "day12"
 # # TASK[1] -> 보류
@@ -118,12 +113,16 @@ case 2. .shp 파일도 .dbf를 찾아서 작성하는 것을 권장하나, 없�
 # for num, task in enumerate(TASK[5:]):
 #     if (ORG_NAME[num]!=None) and (PUB_OPT[num]!=None):
 #         metadata = METADF(path, DAY, task)
+# data = NOrMultiDF(path, DAY, TASK[1]+'.xls', index_col = [0, 1], header = [0, 1, 2])# encoding='UTF-16')#, sep='\t', index_col=[0,1])
 
-#     data = NOrMultiDF(path, DAY, FNAME[num])
-#     pubs = metaPubFile(PUB_OPT[num])
-#     filedata = FILEDF(path, DAY, task)
-#     if task[:2]=='서울':    # 서울열린공공데이터면 거의 openapi가 있었음
-#         openapi = OAPIDF(path, DAY, task,)
+# org_col = list(map(lambda x: '_'.join(x) if x[0]!=x[1] else '_'.join(x[1:]), data.columns))
+# # org_col = list(map(lambda x: '_'.join(y.split('.')[-1] for y in x), data.index))
+# # org_col = ['전체', '성별_남성', '성별_여성', '연령_15~19세', '연령_20대', '연령_30대', '연령_40대', '연령_50대', '연령_60대', '연령_70대이상', '학력_초졸 이하', '학력_중졸', '학력_고졸', '학력_대졸이상', '동거가구원수_1인', '동거가구원수_2인', '동거가구원수_3인', '동거가구원수_4인', '동거가구원수_5인 이상', '혼인상태별_미혼', '혼인상태별_기혼', '혼인상태별_사별/이혼/기타', '가구주여부_가구주', '가구주여부_가구주 아님', '종사자지위_봉급 근로자', '종사자지위_고용원을 둔 사업자', '종사자지위_고용원이 없는 자영자', '종사자지위_무급가족종사자', '종사자지위_해당없음(무직)', '가구소득_100만원 미만', '가구소득_100~200만원', '가구소득_200~300만원', '가구소득_300~400만원', '가구소득_400~500만원', '가구소득_500~600만원', '가구소득_600만원 이상', '가구소득_무응답', '지역규모_대도시', '지역규모_중소도시', '지역규모_읍면지역', '권역_수도권', '권역_강원/제주권', '권역_충청/세종권', '권역_호남권', '권역_대경권', '권역_동남권', '17개 시도_서울', '17개 시도_부산', '17개 시도_대구', '17개 시도_인천', '17개 시도_광주', '17개 시도_대전', '17개 시도_울산', '17개 시도_세종', '17개 시도_경기', '17개 시도_강원', '17개 시도_충북', '17개 시도_충남', '17개 시도_전북', '17개 시도_전남', '17개 시도_경북', '17개 시도_경남', '17개 시도_제주']
+# #     data = NOrMultiDF(path, DAY, FNAME[num])
+# #     pubs = metaPubFile(PUB_OPT[num])
+# filedata = FILEDF(path, DAY, TASK[1], pub_fcol=org_col, org_fcol=org_col)
+    # if task[:2]=='서울':    # 서울열린공공데이터면 거의 openapi가 있었음
+    #     openapi = OAPIDF(path, DAY, task,)
         
 # # '''
 # # CheckPoint_3
