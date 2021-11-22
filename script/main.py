@@ -1,67 +1,46 @@
 '''
 # TASK : Compare OpenData between Public and Organization databases
 # script
-case 1. 파일 오류를 제외하곤, 기관 데이터는 무조건 존재함.
-case 2. 동일 확장자로 중복 입력된 경우는 몰라, 아니 무엇보다 서버 터트려놓고,,,,,,휴
 '''
 # load library - init
 import os
 import numpy as nps
 import pandas as pd
-# load library - custom
-from config.repeatContents import *
-from config.loaddata import ToDoDF, NOrMultiDF, pdDPoptions
-from config.savedata import METADF, FILEDF, OAPIDF
 
 # init path
 if os.getcwd().split('/')[-1]=='OpenData':
     path = os.path.join(os.getcwd(), 'script')
 else:
     path = os.getcwd()
-    
-# init pandas options
-pdDPoptions()
-    
-# update and init task
-# https://performance.opendata2021.kr/newtask/index.do
-# https://performance.opendata2021.kr/index.do  
-## 업무 페이지 로그인 만료 화면 
-    ### <- 웃긴 게 여기서 바로 접근하면, 로그인 아이디랑 비밀번호가 맞는데도 로그인이랑 비밀번호가 맞지 않다는 오류메세지가 출력됨. 어디서 끌어온 html코드로 보임
-#  ID : 
-    # selector ; #loginId
-    # XPATH ; //*[@id="loginId"]
-#   PW :
-    # selector ; #loginPwd
-    # XPATH ; //*[@id="loginPwd"]
-#   Login : 
-    # selector ; #login
-    # XPATH ; //*[@id="login"]
-# td.class="jobAsignDt" >>> day99로 출력되는 형식이 아님
-
-
-# 나중에 크롤링으로 가지고 올 부분
-# tbody@jobGrid
-# td>a.class="data"
-# a>href로 접근하면 화면이 이상하게 출력됨. selenium으로 접근해야 함.
-# td.class="siteNm"
-# SITE 입력하는 부분은 나중에 크롤링이 나은지, 짜증나는 데이터 정제가 빠른지 비교하고 작성
-
-# with open(f"{os.getcwd()}/task.json", 'r') as jsf:
-#     jsd = json.loads(jsf.read())
-
-# ***  ***
-# DAYS, TASKS, SITES = jsd['date'], jsd['tasks'], jsd['org_url']
-# UpdateJSON(DAYS, TASKS, urls=SITES, path=path)
-
-# URL, DAY, SITE, TASK = NessFromJSON(path)
-# URL, DAY, SITE, TASK = NessFromJSON(path, 5)
 
 '''
 CheckPoint_1
 : main.ipynb "markdown"으로 확인
+
+case 1. 파일 오류를 제외하곤, 기관 데이터는 무조건 존재함.
+case 2. 동일 확장자로 중복 입력된 경우는 몰라, 아니 무엇보다 서버 터트려놓고,,,,,,휴
 '''
-# TodayDF, idpw = ToDoDF(TASK)
-# print(TodayDF.to_markdown())
+# load library - custom
+from config.repeatContents import *
+from config.loaddata import ToDoDF, NOrMultiDF, pdDPoptions
+from config.savedata import METADF, FILEDF, OAPIDF
+
+# init pandas options
+pdDPoptions()
+    
+# *** scraping ***
+# DAYS, TASKS, SITES = jsd['date'], jsd['tasks'], jsd['org_url']
+# UpdateJSON(DAYS, TASKS, urls=SITES, path=path)
+
+URL, DAY, SITE, TASK = NessFromJSON(path)
+# URL, DAY, SITE, TASK = NessFromJSON(path, 5)
+
+if not os.path.isdir(os.path.join(path, DAY)):
+    os.mkdir(os.path.join(path, DAY))
+    
+TodayDF, idpw = ToDoDF(TASK)
+print(TodayDF.to_markdown())
+
 # # '''
 # # days = "day12"
 # # TASK[1] -> 보류
@@ -72,7 +51,7 @@ CheckPoint_1
 CheckPoint_2
 : CheckPoint_1에 따라 작성 내용 수정
 case 1. 통계면 메타데이터 작성할 필요 없음.
-case 2. .shp 파일도 .dbf를 찾아서 작성하는 것을 권장하나, 없으면 생략
+case 2. .shp 생략
 ********************************* 생각 정리 중 *******************************
 : 현재는 어려움을 겪고 있지만, 크롤링으로 자동화 가능하도록 하는 것이 목표임.
 : 그렇게 하기 위해서는 일단 각 사이트가 어떤 매커니즘으로 돌아가는지 확인해야 함.....

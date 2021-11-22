@@ -6,7 +6,7 @@ def UpdateJSON(days, tasks, urls=None, path=None):
     if path==None:
         path = input("tasklist.json이 위치한 경로 : ")
         
-    with open(f'{path}/tasklist.json', 'r') as jsf:
+    with open(f'{path}/tasklist.json', 'r', encoding='utf-8') as jsf:
         jsd = json.loads(jsf.read())
         
     if jsd['comp_list']['days'][-1]==days:
