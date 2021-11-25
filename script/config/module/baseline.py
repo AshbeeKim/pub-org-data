@@ -14,6 +14,8 @@ class SearchPub:
             print("임의로 설정한 경로는 '/usr/local/bin/chromedriver/'이며, 어떠한 옵션도 설정하지 않았습니다.")
         
     def encoded(keyword):
+        # 당장 내일부터 다시 업무가 바뀐다고 하던데,.,.하....
+        return keyword
         # repeatContents로 옮겨야할지
 # filedata        
 # https://www.data.go.kr/tcs/dss/selectDataSetList.do?dType=FILE&keyword=%EC%82%B0%EB%A6%BC%EC%9E%AC%ED%95%B4+%EA%B4%80%EC%8B%AC%EC%9D%B8%EA%B5%AC+%EC%A0%95%EB%B3%B4&detailKeyword=&publicDataPk=&recmSe=N&detailText=&relatedKeyword=&commaNotInData=&commaAndData=&commaOrData=&must_not=&tabId=&dataSetCoreTf=&coreDataNm=&sort=&relRadio=&orgFullName=&orgFilter=&org=&orgSearch=&currentPage=1&perPage=10&brm=&instt=&svcType=&kwrdArray=&extsn=&coreDataNmArray=&pblonsipScopeCode=
