@@ -1,5 +1,28 @@
 _site
-data
-module
+# 삭제해도 상관없는, 아니 꼭 삭제해야하는 애플 숨김 파일
+.DS_Store
+
+# 대외비
+2차_*
+script/main.ipynb
+
+# 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
+__pycache__
+._*
 .*
-day*
+*.pdf
+*.pptx
+*.png
+*.csv
+*.xls
+*.xlsx
+*.lock
+*.toml
+*.json
+*.md
+data
+dependency.txt
+## scraping baseline
+*/scrap
+## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
+reports/Nov.ipynb
