@@ -14,26 +14,22 @@ __pycache__
 # 대외비
 2차_*
 ## PubOrgComp
-script/comp_*
-script/day*
+data
 
 # 업무 중 불필요하다고 판단되는 내용
-script/*.json
-script/config/from2to_json.py
+script
+config/compare/from*
 
 # 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
 *.lock
 *.toml
 *.md
-data
 LICENSE
 config/scraping
-config/__init__.py
-config/kr_csv.py
 ## scraping baseline from colab
-script/config/Scrap.py
+script/config
 ## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
-reports/Nov.ipynb
+reports
 ## check dependencies using poetry
 dependency.txt
 ## module list, how to use, task['script'] flow
