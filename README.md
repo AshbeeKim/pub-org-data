@@ -1,2 +1,12 @@
 # pub-org-data
-compared with PUBDATA and ORGDATA
+
+```
+.
+├── config
+│   ├── compare
+│   ├── define
+│   └── scraping
+├── reports
+└── script
+    └── config
+```
