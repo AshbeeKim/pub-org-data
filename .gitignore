@@ -1,12 +1,15 @@
 _site
 # 삭제해도 상관없는, 아니 꼭 삭제해야하는 애플 숨김 파일
 .DS_Store
+<<<<<<< HEAD
 
 # 대외비
 2차_*
 script/main.ipynb
 
 # 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
+=======
+>>>>>>> 8b40f28db5b9d1be670c44e52e81d20582b20076
 __pycache__
 ._*
 .*
@@ -16,6 +19,7 @@ __pycache__
 *.csv
 *.xls
 *.xlsx
+<<<<<<< HEAD
 *.lock
 *.toml
 *.json
@@ -26,3 +30,29 @@ dependency.txt
 */scrap
 ## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
 reports/Nov.ipynb
+=======
+
+# 대외비
+2차_*
+## PubOrgComp
+data
+
+# 업무 중 불필요하다고 판단되는 내용
+script
+config/compare/from*
+
+# 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
+*.lock
+*.toml
+*.md
+LICENSE
+config/scraping
+## scraping baseline from colab
+script/config
+## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
+reports
+## check dependencies using poetry
+dependency.txt
+## module list, how to use, task['script'] flow
+script/search-task.md
+>>>>>>> 8b40f28db5b9d1be670c44e52e81d20582b20076
