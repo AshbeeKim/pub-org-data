@@ -1,10 +1,18 @@
 import os
 from glob import glob
-# import re
-# dirname = re.search('[^/]+$', os.getcwd()).group(0)
+import chardet  # 확정적인 방식이 아닌, 해당 파일에 대한 "가장 가능성 높은 인코딩 방식"
 import numpy as np
 import pandas as pd
 
+# encoding_types = [
+#     'utf-8',
+#     'utf-16',
+#     'utf-16le',
+#     'utf-32-le',
+#     'ISO_8859-1',
+#     'windows-1251',
+#     'euc-kr'
+# ]
 class WIN_CSV:
     def __init__(self, dpath=None, check_num=0):
         self.dir_path = os.getcwd()
@@ -25,7 +33,13 @@ class WIN_CSV:
                 try:
                     self.data = pd.read_csv(self.csv_list[self.check_num], encoding="euc-kr", **kwargs)
                 except:
-                    self.data = pd.read_csv(self.csv_list[self.check_num], encoding="utf-16", **kwargs)
+                    try:
+                        self.data = pd.read_csv(self.csv_list[self.check_num], encoding="utf-16", **kwargs)
+                    except:
+                        try:
+                            self.data = pd.read_csv(self.csv_list[self.check_num], encoding="utf-16le", **kwargs) 
+                        except:
+                            pass
             
         self.col_list = self.data.columns
         self.dtypes = [self.data[fcol].dtype for fcol in self.col_list]
