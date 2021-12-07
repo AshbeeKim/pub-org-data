@@ -20,12 +20,11 @@ __pycache__
 data
 
 # 업무 중 불필요하다고 판단되는 내용
-script
-config/compare
+config/compare/*
 
 # 아직 정리되지 않았기 때문에 임의로 업로드 금지한 내용
 LICENSE
-config/scraping
+config/scraping/*
 
 ## Due to 22.Nov.2021   ## Once finished Nov, delete Nov.ipynb -> commit
 reports
@@ -34,4 +33,4 @@ dependency.txt
 
 ## module list, how to use, task['script'] flow
 ## scraping baseline from colab
-script
+script/*
